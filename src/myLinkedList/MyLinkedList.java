@@ -33,18 +33,15 @@ public class MyLinkedList<T> {
             last = tNode;
             size++;
             return;
-
         }
 
         Node<T> tNode = new Node<>(null, last, value);
         last.next = tNode;
         last = tNode;
         size++;
-
-
     }
 
-    //    2. add prepend to linkedList
+    //    2. add en element prepend to linkedList
     public void addPrepend(T value) {
         if (size == 0) {
             Node<T> tNode = new Node<>(null, null, value);
@@ -58,15 +55,6 @@ public class MyLinkedList<T> {
         first.previous = tNode;
         first = tNode;
         size++;
-    }
-
-    @Override
-    public String toString() {
-        return "MyLinkedList{" +
-                "first=" + first.value.toString() +
-                ", last=" + last.value.toString() +
-                ", size=" + size +
-                '}';
     }
 
     //    3. toString linkedList
@@ -83,7 +71,7 @@ public class MyLinkedList<T> {
         return b.append(" ]").toString();
     }
 
-    //    4. get element from linkedList by index
+    //    4. get an element from linkedList by index
     public T getIndex(int index) {
         int i = 0;
         Node<T> temp = first;
@@ -94,7 +82,7 @@ public class MyLinkedList<T> {
         return temp.value;
     }
 
-    //    5. add element to linkedList by index
+    //    5. add an element to linkedList by index
     public void addByIndex(int index, T value) {
         if (size == 0) {
             Node<T> tNode = new Node<>(null, null, value);
@@ -117,7 +105,7 @@ public class MyLinkedList<T> {
         size++;
     }
 
-    //    6. set element to linkedList by index
+    //    6. set an element to linkedList by index
     public void setByIndex(int index, T value) {
         Node<T> temp = first;
         for (int i = 0; i < index; i++) {
@@ -149,8 +137,18 @@ public class MyLinkedList<T> {
             }
             temp = temp.next;
         }
-
     }
 
+    //    9. remove an element from start of the linkedList
+    public void removeFromStart() {
+        first = first.next;
+        first.previous = null;
+    }
+
+    //    10. remove an element from end of the linkedList
+    public void removeFromEnd() {
+        last = last.previous;
+        last.next = null;
+    }
 
 }
